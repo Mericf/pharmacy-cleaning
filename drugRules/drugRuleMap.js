@@ -1,6 +1,6 @@
 import { drugs } from "./consts";
-import { dafalganRule } from "./dafalgan";
-import { fervexRule } from "./fervex";
+import { dafalganRule } from "./dafalgan/dafalgan";
+import { fervexRule } from "./fervex/fervex";
 import { herbalTeaRule } from "./herbalTea";
 import { magicPillRule } from "./magicPill";
 import { normalRule } from "./normal";

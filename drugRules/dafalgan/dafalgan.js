@@ -1,10 +1,11 @@
-import { Drug } from "../pharmacy";
-import { rules } from "./consts";
-import { isExpired, reduceBenefit, reduceExpiresIn } from "./helpers";
+import { Drug } from "../../pharmacy";
+import { rules } from "../consts";
+import { isExpired, reduceBenefit, reduceExpiresIn } from "../helpers";
 
 /*
 Dafalgan :
-- se dégrade 2x plus vite qu'un normal = réduit benefit de 2 avant expiration
+- se dégrade 2x plus vite qu'un normal
+- réduit benefit de 2 avant expiration
 - réduit expiresIn de 1
 - réduit benefit de 2 supplémentaires si expiré
 */
