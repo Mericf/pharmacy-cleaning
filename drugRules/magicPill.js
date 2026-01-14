@@ -1,3 +1,1 @@
-export const magicPillRule = () => {
-  // No changes.
-};
+export const magicPillRule = () => {};
