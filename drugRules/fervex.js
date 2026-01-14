@@ -1,4 +1,5 @@
-import { increaseBenefit, isExpired, reduceExpiresIn } from "./helpers";
+import { increaseBenefit, reduceExpiresIn, isExpired } from "./helpers";
+import { expiresIn, rules } from "./consts";
 
 /*
 Fervex :
@@ -10,13 +11,15 @@ Fervex :
 */
 
 export const fervexRule = (drug) => {
-  increaseBenefit(drug, 1);
-  if (drug.expiresIn < 11) increaseBenefit(drug, 1);
-  if (drug.expiresIn < 6) increaseBenefit(drug, 1);
+  increaseBenefit(drug, rules.DEFAULT_INCREASE_AMOUNT);
+  if (drug.expiresIn < expiresIn.FERVEX_LIMIT_HIGH)
+    increaseBenefit(drug, rules.DEFAULT_INCREASE_AMOUNT);
+  if (drug.expiresIn < expiresIn.FERVEX_LIMIT_LOW)
+    increaseBenefit(drug, rules.DEFAULT_INCREASE_AMOUNT);
 
   reduceExpiresIn(drug);
 
   if (isExpired(drug)) {
-    drug.benefit = 0;
+    drug.benefit = rules.EXPIRED_BENEFIT_VALUE;
   }
 };
