@@ -1,10 +1,11 @@
-import { dailyRule } from "./drugRules/dailyRule";
+import { dailyRule } from "./drugRules";
 
 export class Drug {
   constructor(name, expiresIn, benefit) {
     this.name = name;
     this.expiresIn = expiresIn;
     this.benefit = benefit;
+    Object.freeze(this);
   }
 }
 
@@ -14,7 +15,7 @@ export class Pharmacy {
   }
 
   updateBenefitValue() {
-    this.drugs.forEach((drug) => dailyRule(drug));
-    return this.drugs;
+    this.drugs = this.drugs.map((drug) => dailyRule(drug));
+    return [...this.drugs];
   }
 }

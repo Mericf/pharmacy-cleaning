@@ -1,3 +1,4 @@
+import { Drug } from "../pharmacy";
 import { rules } from "./consts";
 import { isExpired, reduceBenefit, reduceExpiresIn } from "./helpers";
 
@@ -9,7 +10,12 @@ Normal :
 */
 
 export const normalRule = (drug) => {
-  reduceBenefit(drug, rules.DEFAULT_REDUCE_AMOUNT);
-  reduceExpiresIn(drug);
-  if (isExpired(drug)) reduceBenefit(drug, rules.DEFAULT_REDUCE_AMOUNT);
+  let newBenefit = reduceBenefit(drug.benefit, rules.DEFAULT_REDUCE_AMOUNT);
+  const newExpiresIn = reduceExpiresIn(drug.expiresIn);
+
+  if (isExpired(newExpiresIn)) {
+    newBenefit = reduceBenefit(newBenefit, rules.DEFAULT_REDUCE_AMOUNT);
+  }
+
+  return new Drug(drug.name, newExpiresIn, newBenefit);
 };

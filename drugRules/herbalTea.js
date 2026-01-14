@@ -1,5 +1,6 @@
-import { increaseBenefit, reduceExpiresIn, isExpired } from "./helpers";
+import { Drug } from "../pharmacy";
 import { rules } from "./consts";
+import { increaseBenefit, isExpired, reduceExpiresIn } from "./helpers";
 
 /*
 Herbal Tea :
@@ -8,10 +9,12 @@ Herbal Tea :
 - +1 supplémentaire si expiré
 */
 export const herbalTeaRule = (drug) => {
-  increaseBenefit(drug, rules.DEFAULT_INCREASE_AMOUNT);
-  reduceExpiresIn(drug);
+  let newBenefit = increaseBenefit(drug.benefit, rules.DEFAULT_INCREASE_AMOUNT);
+  const newExpiresIn = reduceExpiresIn(drug.expiresIn);
 
-  if (isExpired(drug)) {
-    increaseBenefit(drug, rules.DEFAULT_INCREASE_AMOUNT);
+  if (isExpired(newExpiresIn)) {
+    newBenefit = increaseBenefit(newBenefit, rules.DEFAULT_INCREASE_AMOUNT);
   }
+
+  return new Drug(drug.name, newExpiresIn, newBenefit);
 };

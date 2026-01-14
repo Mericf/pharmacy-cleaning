@@ -1,9 +1,8 @@
 import { benefit, rules } from "../consts";
 
-// augmente drug benefit
 export const increaseBenefit = (
-  drug,
+  currentBenefit,
   amount = rules.DEFAULT_INCREASE_AMOUNT,
 ) => {
-  drug.benefit = Math.min(benefit.MAX_BENEFIT, drug.benefit + amount);
+  return Math.min(benefit.MAX_BENEFIT, currentBenefit + amount);
 };
