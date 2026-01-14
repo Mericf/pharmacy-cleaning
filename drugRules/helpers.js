@@ -12,3 +12,6 @@ export const increaseBenefit = (drug, amount = 1) => {
 export const reduceExpiresIn = (drug) => {
   drug.expiresIn = drug.expiresIn - 1;
 };
+
+// vérifie si drug est expiré
+export const isExpired = (drug) => drug.expiresIn < 0;
