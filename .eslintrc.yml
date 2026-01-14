@@ -5,3 +5,10 @@ parser: "@babel/eslint-parser"
 extends:
   - eslint:recommended
   - plugin:prettier/recommended
+plugins:
+  - import
+rules:
+  import/extensions:
+    - error
+    - js: never
+      ignorePackages: true

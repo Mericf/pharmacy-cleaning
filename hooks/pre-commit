@@ -1,0 +1,29 @@
+#!/bin/sh
+
+echo "Correction des erreurs lint"
+npm run lint:fix
+LINT_FIX_EXIT_CODE=$?
+if [ $LINT_FIX_EXIT_CODE -ne 0 ]; then
+  echo "Erreur correction lint"
+  exit 1
+fi
+git add -u
+
+echo "Vérification des erreurs de lint restantes"
+npm run lint
+LINT_EXIT_CODE=$?
+if [ $LINT_EXIT_CODE -ne 0 ]; then
+  echo "Erreurs lints persistantes détectées"
+  exit 1
+fi
+
+echo "Exécution du test de non-regression avant le commit"
+npm run test:regression
+TEST_EXIT_CODE=$?
+if [ $TEST_EXIT_CODE -ne 0 ]; then
+  echo "Test de non-regression échoué"
+  exit 1
+fi
+
+echo "Linting + tests réussis"
+exit 0
