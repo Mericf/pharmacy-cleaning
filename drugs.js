@@ -6,3 +6,5 @@ export const drugs = [
   new Drug("Fervex", 12, 35),
   new Drug("Magic Pill", 15, 40),
 ];
+
+export const drugsWithDafalgan = [...drugs, new Drug("Dafalgan", 10, 5)];
