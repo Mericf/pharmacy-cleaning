@@ -1,5 +1,5 @@
-import { reduceBenefit, reduceExpiresIn, isExpired } from "./helpers";
-import { benefit, rules } from "./consts";
+import { rules } from "./consts";
+import { isExpired, reduceBenefit, reduceExpiresIn } from "./helpers";
 
 /*
 Normal :
@@ -9,8 +9,7 @@ Normal :
 */
 
 export const normalRule = (drug) => {
-  if (drug.benefit > benefit.MIN_BENEFIT)
-    reduceBenefit(drug, rules.DEFAULT_REDUCE_AMOUNT);
+  reduceBenefit(drug, rules.DEFAULT_REDUCE_AMOUNT);
   reduceExpiresIn(drug);
   if (isExpired(drug)) reduceBenefit(drug, rules.DEFAULT_REDUCE_AMOUNT);
 };
