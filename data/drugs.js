@@ -1,4 +1,4 @@
-import { Drug } from "./pharmacy";
+import { Drug } from "../classes/Drug";
 
 export const drugs = [
   new Drug("Doliprane", 20, 30),

@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
-import { drugs } from "../drugs";
-import { Pharmacy } from "../pharmacy";
+import { drugs } from "../data/drugs";
+import { Pharmacy } from "../classes/Pharmacy";
 
 describe("No regression test", () => {
   it("should produce the same output as the reference output.json (non-regression test)", () => {

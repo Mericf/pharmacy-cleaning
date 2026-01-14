@@ -1,6 +1,6 @@
-import { Drug } from "../pharmacy";
-import { rules } from "./consts";
-import { increaseBenefit, isExpired, reduceExpiresIn } from "./helpers";
+import { Drug } from "../../../classes/Drug";
+import { rules } from "../../consts";
+import { increaseBenefit, isExpired, reduceExpiresIn } from "../../helpers";
 
 /*
 Herbal Tea :

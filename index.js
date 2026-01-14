@@ -1,6 +1,6 @@
 import fs from "fs";
-import { drugs } from "./drugs";
-import { Pharmacy } from "./pharmacy";
+import { drugs } from "./data/drugs";
+import { Pharmacy } from "./classes/Pharmacy";
 
 const pharmacy = new Pharmacy(drugs);
 

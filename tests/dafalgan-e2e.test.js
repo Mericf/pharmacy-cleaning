@@ -1,5 +1,5 @@
-import { drugsWithDafalgan } from "../drugs";
-import { Pharmacy } from "../pharmacy";
+import { drugsWithDafalgan } from "../data/drugs";
+import { Pharmacy } from "../classes/Pharmacy";
 
 describe("Dafalgan", () => {
   it("devrait dégrader Dafalgan 2x plus vite qu'un médicament normal", () => {
